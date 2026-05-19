@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2026 東京・仙台鐵道親子之旅</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #f0fdf4;
+            --accent: #ef4444;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            padding-bottom: 30px;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 18px 15px;
+        }
+
+        header h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+
+        /* 導航分頁列 - 手機滾動優化 */
+        .nav-tabs {
+            display: flex;
+            background-color: white;
+            border-bottom: 1px solid var(--border);
+            overflow-x: auto;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .nav-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-btn {
+            flex: 1;
+            min-width: 85px;
+            padding: 16px 10px;
+            border: none;
+            background: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            text-align: center;
+            white-space: nowrap;
+            transition: all 0.15s ease;
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+            background-color: #f8fafc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 16px auto;
+            padding: 0 12px;
+        }
+
+        .day-content {
+            display: none;
+        }
+
+        .day-content.active {
+            display: block;
+        }
+
+        /* 雙欄響應式佈局 */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 10px 0 12px 0;
+            padding-bottom: 6px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        /* 卡片極簡設計 */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px;
+            margin-bottom: 12px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .time-badge {
+            background-color: #334155;
+            color: white;
+            padding: 3px 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        .title-text {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+
+        .map-link {
+            display: inline-flex;
+            align-items: center;
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            background-color: #eff6ff;
+            padding: 6px 12px;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+
+        .notes {
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-top: 6px;
+            background-color: #f8fafc;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .notes strong {
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>📅 2026 東京・仙台鐵道親子之旅</h1>
+</header>
+
+<div class="nav-tabs" id="navTabs">
+    <button class="tab-btn active" onclick="switchDay(1)">5/21 (四)</button>
+    <button class="tab-btn" onclick="switchDay(2)">5/22 (五)</button>
+    <button class="tab-btn" onclick="switchDay(3)">5/23 (六)</button>
+    <button class="tab-btn" onclick="switchDay(4)">5/24 (日)</button>
+    <button class="tab-btn" onclick="switchDay(5)">5/25 (一)</button>
+    <button class="tab-btn" onclick="switchDay(6)">5/26 (二)</button>
+    <button class="tab-btn" onclick="switchDay(7)">5/27 (三)</button>
+</div>
+
+<div class="container">
+    <div id="day1" class="day-content active">
+        <div class="grid-layout">
+            <div>
+                <h2 class="section-title">📍 行程活動 & 交通動線</h2>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="time-badge">17:25</span>
+                        <span class="title-text">成田機場 (NRT) 到達</span>
+                    </div>
+                    <div class="notes">17:25 到達。落機後先去排隊買實體 Suica 卡，或者直接用 iPhone Wallet 加卡增值。</div>
+                    <a class="map-link" href="https://maps.google.com/?q=Narita+Airport" target="_blank">🗺️ Google Map</a>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="time-badge">18:30</span>
+                        <span class="title-text">移動：機場 → 錦糸町</span>
+                    </div>
+                    <div class="notes">搭乘 <strong>JR N'EX (成田特快)</strong> 直達東京站，再轉乘總武線快速抵達錦糸町站。沿途可以同小朋友一齊睇窗外東京夜景。如果有需要，可於機場先將大行李寄往仙台酒店。</div>
+                </div>
+            </div>
+            <div>
+                <h2 class="section-title">🍴 當日美食推薦</h2>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="time-badge">20:00</span>
+                        <span class="title-text">餃子王將 (錦糸町)</span>
+                    </div>
+                    <div class="notes">站前連鎖店，落機第一晚最啱快速開飯，<strong>性價比極高</strong>，煎餃同炒飯啱晒小朋友。</div>
+                    <a class="map-link" href="https://maps.google.com/?q=Gyoza+no+Ohsho+Kinshicho" target="_blank">🗺️ 餐廳地圖</a>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="time-badge">20:00</span>
+                        <span class="title-text">薩莉亞 (錦糸町北口)</span>
+                    </div>
+                    <div class="notes">平價意大利餐廳之王，有小朋友最愛嘅肉醬意粉、薄餅同粟米湯，幾百蚊日圓一碟非常抵食。</div>
+                    <a class="map-link" href="https://maps.google.com/?q=Saizeriya+Kinshicho" target="_blank">🗺️ 餐廳地圖</a>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="time-badge">20:00</span>
+                        <span class="title-text">Olinas Mall 地庫超市</span>
+                    </div>
+                    <div class="notes">可以去站附近嘅 Olinas Mall 超市掃貨，買定未來幾日份量嘅早餐、日本鮮奶、生果（如士多輩梨/青森蘋果）。</div>
+                    <a class="map-link" href="https://maps.google.com/?q=Olinas+Mall+Kinshicho" target="_blank">🗺️ 餐廳地圖</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="day2" class="day-content">
+        <div class="grid-layout">
+            <div>
+                <h2 class="section-title">📍 行程活動 & 交通動線</h2>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="time-badge">09:00</span>
+                        <span class="title-text">移動：錦糸町 → 鎌倉</span>
+                    </div>
+                    <div class="notes">錦糸町站 3 號月台搭乘 <strong>JR 總武線快速 (往逗子方向)</strong> 直達鎌倉站。避開週六人潮。車程約 1 小時，<strong>強烈建議買 Green Car (綠色車廂)</strong> 位，保證小朋友有位坐。</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="time-badge">11:00</span>
+                        <span class="title-text">鎌倉/江之島沿線觀光</span>
+                    </div>
+                    <div class="notes">到達鎌倉站後，購買江之電一日券，搭乘復古嘅江之電沿線遊玩。必睇重點：鎌倉高校前平交道（睇江之電通過平交道、海景）、長谷站落車睇長谷大佛、七里濱海岸散步。</div>
+                    <a class="map-link" href="https://maps.google.com/?q=Kamakura+Station" target="_blank">🗺️ Google Map</a>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="time-badge">17:00</span>
+                        <span class="title-text">移動：鎌倉 → 錦糸町</span>
+                    </div>
+                    <div class="notes">由鎌倉站原路搭乘 JR 橫須賀線/總武線快速直通返回錦糸町站。回程小朋友通常會瞓覺，Green Car 可以俾佢哋舒服休息。</div>
+                </div>
+            </div>
+            <div>
+                <h2 class="section-title">🍴 當日美食推薦</h2>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="time-badge">12:30</span>
+                        <span class="title-text">江之島小屋</span>
+                    </div>
+                    <div class="notes">靠近片瀨江之島站，面向大海。必食招牌片瀨漁港直送海鮮飯、炸魚餅，景觀一流。</div>
+                    <a class="map-link" href="https://maps.google.com/?q=Enoshima+Koya" target="_blank">🗺️ 餐廳地圖</a>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="time-badge">12:30</span>
+                        <span class="title-text">藏壽司 (鎌倉店)</span>
+                    </div>
+                    <div class="notes">平價迴轉壽司，食夠 5 碟可以將個盤放入回收槽玩扭蛋抽獎，小朋友最開心，大人又可以食得輕鬆。</div>
+                    <a class="map-link" href="https://maps.google.com/?q=Kura+Sushi+Kamakura" target="_blank">🗺️ 餐廳地圖</a>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="time-badge">12:30</span>
+                        <span class="title-text">とびっちょ (江之島本店)</span>
+                    </div>
+                    <div class="notes">湘南名物魩仔魚 (しらす) 丼專門店，大碗抵食，推薦熟魩仔魚丼，份量超大<strong>性價比極高</strong>。</div>
+                    <a class="map-link" href="https://maps.google.com/?q=Tobicho+Enoshima" target="_blank">🗺️ 餐廳地圖</a>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="time-badge">19:00</span>
+                        <span class="title-text">野郎壽司 (錦糸町店)</span>
+                    </div>
+                    <div class="notes">位於錦糸町站前嘅老牌壽司店，食材新鮮、價錢合理，壽司拼盤好抵食，可以體驗正宗日式壽司店氛圍。</div>
+                    <a class="map-link" href="https://maps.google.com/?q=Yaro+Sushi+Kinshicho" target="_blank">🗺️ 餐廳地圖</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="day
