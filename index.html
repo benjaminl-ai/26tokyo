@@ -3,46 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>2026 東京・仙台鐵道親子之旅 - H5 Shinkansen Edition</title>
+    <title>2026 東京・仙台鐵道親子之旅 - H5 Edition</title>
     <style>
         :root {
             --h5-green: #008542; /* H5 常盤綠 */
             --h5-purple: #6b2d82; /* H5 彩香紫 */
-            --h5-white: #ffffff;
-            --h5-silver: #a2a2a2;
-            --bg: #f0f4f0;
+            --bg: #f4f7f4;
             --card-bg: #ffffff;
-            --text: #1a1a1a;
-            --border: #d1d5db;
+            --text: #0f172a;
+            --border: #cbd5e1;
+            --accent: #ef4444;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
         body {
-            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background-color: var(--bg);
             color: var(--text);
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
-        /* H5 主題 Header */
         header {
             background-color: var(--h5-green);
             color: white;
-            padding: 20px 15px;
             text-align: center;
-            position: relative;
-            border-bottom: 8px solid var(--h5-purple);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            padding: 16px 15px;
+            border-bottom: 6px solid var(--h5-purple);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        header h1 { font-size: 1.4rem; font-weight: 900; letter-spacing: 1px; }
-        .flight-info { font-size: 0.85rem; margin-top: 8px; font-weight: bold; background: rgba(0,0,0,0.2); display: inline-block; padding: 4px 10px; border-radius: 20px; }
+        header h1 { font-size: 1.3rem; font-weight: 800; }
+        .flight-tag { font-size: 0.8rem; background: rgba(0,0,0,0.2); display: inline-block; padding: 3px 10px; border-radius: 12px; margin-top: 6px; font-weight: bold; }
 
-        /* 導航分頁列 */
+        /* 導航分頁 */
         .nav-tabs {
             display: flex;
-            background-color: var(--h5-white);
+            background-color: white;
             overflow-x: auto;
             position: sticky;
             top: 0;
@@ -50,18 +47,20 @@
             border-bottom: 1px solid var(--border);
             -webkit-overflow-scrolling: touch;
         }
+        .nav-tabs::-webkit-scrollbar { display: none; }
 
         .tab-btn {
             flex: 1;
-            min-width: 90px;
-            padding: 15px 5px;
+            min-width: 85px;
+            padding: 14px 5px;
             border: none;
             background: none;
             font-size: 0.85rem;
             font-weight: bold;
-            color: #666;
+            color: #64748b;
             cursor: pointer;
-            transition: 0.2s;
+            text-align: center;
+            white-space: nowrap;
         }
 
         .tab-btn.active {
@@ -70,88 +69,147 @@
             border-bottom: 4px solid var(--h5-green);
         }
 
-        .container { max-width: 1000px; margin: 15px auto; padding: 0 12px; padding-bottom: 80px; }
-
-        .day-content { display: none; }
-        .day-content.active { display: block; animation: fadeIn 0.3s ease-in; }
-
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        /* 住宿資訊卡 */
-        .hotel-card {
-            background: linear-gradient(135deg, #2d3748, #1a202c);
-            color: white;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            font-size: 0.9rem;
-            border-left: 6px solid var(--h5-purple);
-        }
-        .hotel-card h3 { font-size: 1rem; margin-bottom: 5px; color: #cbd5e0; }
-
-        /* 行程卡片 */
-        .section-title {
-            font-size: 1.1rem;
-            color: var(--h5-green);
-            margin: 20px 0 10px;
-            display: flex;
-            align-items: center;
-        }
-        .section-title::before { content: "●"; margin-right: 8px; font-size: 0.8rem; }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 12px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        /* 主佈局：地圖固定與內容區 */
+        .main-layout {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 12px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
         }
 
-        .time-row { display: flex; align-items: center; margin-bottom: 8px; }
-        .time-badge { background: var(--h5-green); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
-        .title-text { margin-left: 10px; font-weight: bold; font-size: 1rem; }
-
-        .notes { font-size: 0.9rem; color: #444; background: #f8fafc; padding: 10px; border-radius: 6px; margin-top: 8px; border-left: 3px solid var(--h5-silver); }
-        .notes strong { color: var(--accent); }
-
-        .map-link {
-            display: inline-flex;
-            align-items: center;
-            color: white;
-            background: #2563eb;
-            text-decoration: none;
-            font-size: 0.8rem;
-            padding: 6px 12px;
-            border-radius: 6px;
-            margin-top: 10px;
-            font-weight: bold;
+        /* 頂部固定互動地圖 */
+        .sticky-map-box {
+            position: sticky;
+            top: 50px;
+            z-index: 90;
+            background: var(--bg);
+            padding-bottom: 10px;
         }
 
-        /* Google Map Embed */
-        .map-container {
+        .map-wrapper {
             width: 100%;
-            height: 250px;
+            height: 280px;
             border-radius: 12px;
             overflow: hidden;
-            border: 2px solid var(--border);
-            margin-bottom: 20px;
+            border: 3px solid var(--h5-green);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            background: #e5e7eb;
         }
-        .map-container iframe { width: 100%; height: 100%; border: 0; }
+        .map-wrapper iframe { width: 100%; height: 100%; border: 0; }
 
-        /* 雙欄佈局 */
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+        .map-banner {
+            background: var(--h5-green);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-top-left-radius: 9px;
+            border-top-right-radius: 9px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .day-content { display: none; }
+        .day-content.active { display: block; }
+
+        /* 雙欄內容 */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        @media (max-width: 768px) { .info-grid { grid-template-columns: 1fr; } }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--h5-green);
+            margin: 12px 0 8px 0;
+            padding-bottom: 4px;
+            border-bottom: 2px solid var(--h5-purple);
+        }
+
+        /* 住宿卡片 */
+        .hotel-card {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            color: white;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        .hotel-card h3 { font-size: 0.95rem; }
+        .hotel-card p { font-size: 0.8rem; color: #94a3b8; }
+
+        /* 行程與美食卡片 */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 14px;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+
+        .time-badge {
+            background-color: #334155;
+            color: white;
+            padding: 2px 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border-radius: 4px;
+        }
+
+        .title-text { font-size: 0.95rem; font-weight: 700; flex: 1; margin-left: 8px; }
+
+        .notes {
+            font-size: 0.88rem;
+            color: #334155;
+            background-color: #f8fafc;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 6px;
+            border-left: 3px solid var(--border);
+        }
+        .notes strong { color: var(--accent); }
+
+        /* 地圖觸發按鈕 */
+        .map-trigger {
+            display: inline-flex;
+            align-items: center;
+            background-color: #eff6ff;
+            color: #1d4ed8;
+            border: 1px solid #bfdbfe;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+        .map-trigger:active { background-color: #dbeafe; }
     </style>
 </head>
 <body>
 
 <header>
     <h1>🚅 2026 東京・仙台鐵道親子之旅</h1>
-    <div class="flight-info">✈️ 去程: UO646 | 回程: UO897</div>
+    <div class="flight-tag">✈️ 去程: UO646 | 回程: UO897</div>
 </header>
 
-<nav class="nav-tabs">
+<div class="nav-tabs">
     <button class="tab-btn active" onclick="switchDay(1)">5/21 (四)</button>
     <button class="tab-btn" onclick="switchDay(2)">5/22 (五)</button>
     <button class="tab-btn" onclick="switchDay(3)">5/23 (六)</button>
@@ -159,187 +217,404 @@
     <button class="tab-btn" onclick="switchDay(5)">5/25 (一)</button>
     <button class="tab-btn" onclick="switchDay(6)">5/26 (二)</button>
     <button class="tab-btn" onclick="switchDay(7)">5/27 (三)</button>
-</nav>
+</div>
 
-<div class="container">
+<div class="main-layout">
+    <div class="sticky-map-box">
+        <div class="map-banner">
+            <span id="map-title">📍 點擊下方行程自動定位</span>
+            <span>H5 實時地圖</span>
+        </div>
+        <div class="map-wrapper">
+            <iframe id="live-map" src="about:blank"></iframe>
+        </div>
+    </div>
 
     <div id="day1" class="day-content active">
-        <div class="hotel-card">
-            <h3>🏠 住宿：東京 Airbnb (Day 1-4)</h3>
-            <p>2-chome-9-5 Taihei, Sumida City, Tokyo 130-0012</p>
-        </div>
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.486259024095!2d139.8148817!3d35.7013063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018892694726261%3A0x6e6e284050505050!2s2-chome-9-5%20Taihei%2C%20Sumida%20City%2C%20Tokyo!5e0!3m2!1zhk!2sjp!4v1700000000000"></iframe>
-        </div>
-        <div class="grid">
+        <div class="hotel-card" onclick="updateMap('🏠 東京 Airbnb', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.233519827471!2d139.8144005!3d35.7044574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ed67d16bb03%3A0x6335a165df8a5a40!2s2-chome-9-5%20Taihei%2C%20Sumida%20City%2C%20Tokyo%20130-0012!5e0!3m2!1szh-HK!2sjp!4v1710000000001')">
             <div>
-                <h2 class="section-title">行程與交通</h2>
+                <h3>🏠 住宿：東京 Airbnb (Day 1-4)</h3>
+                <p>2-chome-9-5 Taihei, Sumida City, Tokyo 130-0012</p>
+            </div>
+            <span class="map-trigger">🗺️ 定位</span>
+        </div>
+        
+        <div class="info-grid">
+            <div>
+                <h2 class="section-title">📍 行程活動 & 交通動線</h2>
                 <div class="card">
-                    <div class="time-row"><span class="time-badge">17:25</span><span class="title-text">UO646 抵達成田</span></div>
-                    <div class="notes">落機排隊買實體 Suica 卡。搭 <strong>JR N'EX</strong> 到東京站轉總武線快速至錦糸町。</div>
-                    <a class="map-link" href="https://maps.app.goo.gl/uXp8V6Vj2m5P7zR89" target="_blank">🗺️ 成田機場 Map</a>
+                    <div class="card-header">
+                        <span class="time-badge">17:25</span>
+                        <span class="title-text">成田機場 (NRT) 到達</span>
+                        <button class="map-trigger" onclick="updateMap('✈️ 成田機場', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3234.6291993415174!2d140.3842183!3d35.7766324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6022f36f903a9f07%3A0xe6bf4ffdfa539e78!2sNarita%20International%20Airport!5e0!3m2!1szh-HK!2sjp!4v1710000000002')">🗺️ 地圖</button>
+                    </div>
+                    <div class="notes">17:25 到達。落機後先去排隊買實體 Suica 卡，或者直接用 iPhone Wallet 加卡增值。</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="time-badge">18:30</span>
+                        <span class="title-text">移動：機場 → 錦糸町</span>
+                    </div>
+                    <div class="notes">搭乘 <strong>JR N'EX (成田特快)</strong> 直達東京站，再轉乘總武線快速抵達錦糸町站。沿途可以同小朋友一齊睇窗外東京夜景。如果有需要，可於機場先將大行李寄往仙台酒店。</div>
                 </div>
             </div>
             <div>
-                <h2 class="section-title">美食推薦</h2>
+                <h2 class="section-title">🍴 當日美食推薦</h2>
                 <div class="card">
-                    <div class="time-row"><span class="time-badge">20:00</span><span class="title-text">餃子王將 / 薩莉亞</span></div>
-                    <div class="notes">錦糸町站前性價比之選。之後去 <strong>Olinas Mall</strong> 超市買鮮奶同早餐。</div>
-                    <a class="map-link" href="https://maps.google.com/?q=Gyoza+no+Ohsho+Kinshicho" target="_blank">🗺️ 餐廳地圖</a>
+                    <div class="card-header">
+                        <span class="title-text">1. 餃子王將 (錦糸町店)</span>
+                        <button class="map-trigger" onclick="updateMap('🍴 餃子王將', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.2869151240217!2d139.8113401!3d35.703144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018894ab0d43f05%3A0x64bf21051fa4f971!2z6Kqf5a2Q44Gu546L5bCHIOWMp-ezueeUuuW6lw!5e0!3m2!1szh-HK!2sjp!4v1710000000003')">🗺️ 店舖</button>
+                    </div>
+                    <div class="notes">站前連鎖店，落機第一晚最啱快速開飯，<strong>性價比極高</strong>，煎餃同炒飯啱晒小朋友。</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="title-text">2. 薩莉亞 (錦糸町北口店)</span>
+                        <button class="map-trigger" onclick="updateMap('🍴 薩莉亞', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.233519827471!2d139.8144005!3d35.7044574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ed4046cd06f%3A0xda82ef74f388da5d!2z44K144O844Oq44KiIOWMp-ezueeUuOWMlw!5e0!3m2!1szh-HK!2sjp!4v1710000000004')">🗺️ 店舖</button>
+                    </div>
+                    <div class="notes">平價意大利餐廳之王，有小朋友最愛嘅肉醬意粉、薄餅同粟米湯，幾百蚊日圓一碟非常抵食。</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="title-text">3. Olinas Mall 地庫超市</span>
+                        <button class="map-trigger" onclick="updateMap('🛒 Olinas Mall', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.0631627918485!2d139.8164057!3d35.7086478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ed834452093%3A0x6b77cd5d36c53d10!2solinas%20MALL!5e0!3m2!1szh-HK!2sjp!4v1710000000005')">🗺️ 超市</button>
+                    </div>
+                    <div class="notes">可以去站附近嘅 Olinas Mall 超市掃貨，買定未來幾日份量嘅早餐、日本鮮奶、生果（如士多啤梨/青森蘋果）。</div>
                 </div>
             </div>
         </div>
     </div>
 
     <div id="day2" class="day-content">
-        <div class="hotel-card">
-            <h3>🏠 住宿：東京 Airbnb (Day 2)</h3>
-            <p>2-chome-9-5 Taihei, Sumida City, Tokyo</p>
-        </div>
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52055.95299496735!2d139.4548698!3d35.3190847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018459a38f9091b%3A0x6b7796d19f3950b3!2sKamakura%2C%20Kanagawa!5e0!3m2!1zhk!2sjp!4v1700000000001"></iframe>
-        </div>
-        <div class="grid">
+        <div class="hotel-card" onclick="updateMap('🏠 東京 Airbnb', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.233519827471!2d139.8144005!3d35.7044574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ed67d16bb03%3A0x6335a165df8a5a40!2s2-chome-9-5%20Taihei%2C%20Sumida%20City%2C%20Tokyo%20130-0012!5e0!3m2!1szh-HK!2sjp!4v1710000000001')">
             <div>
-                <h2 class="section-title">行程與交通</h2>
+                <h3>🏠 住宿：東京 Airbnb (Day 2)</h3>
+                <p>續住墨田區太平 Airbnb</p>
+            </div>
+            <span class="map-trigger">🗺️ 定位</span>
+        </div>
+
+        <div class="info-grid">
+            <div>
+                <h2 class="section-title">📍 行程活動 & 交通動線</h2>
                 <div class="card">
-                    <div class="time-row"><span class="time-badge">09:00</span><span class="title-text">錦糸町 → 鎌倉</span></div>
-                    <div class="notes">搭乘 <strong>JR 總武線快速 (往逗子)</strong> 直達。建議買 <strong>Green Car</strong> 確保有位坐。</div>
+                    <div class="card-header">
+                        <span class="time-badge">09:00</span>
+                        <span class="title-text">移動：錦糸町 → 鎌倉</span>
+                    </div>
+                    <div class="notes">錦糸町站 3 號月台搭乘 <strong>JR 總武線快速 (往逗子方向)</strong> 直達鎌倉站。避開週六人潮。車程約 1 小時，<strong>強烈建議買 Green Car (綠色車廂)</strong> 位，保證小朋友有位坐。</div>
                 </div>
                 <div class="card">
-                    <div class="time-row"><span class="time-badge">11:00</span><span class="title-text">江之電沿線觀光</span></div>
-                    <div class="notes">必睇：鎌倉高校前平交道、長谷大佛。</div>
-                    <a class="map-link" href="https://maps.google.com/?q=Kamakura+Station" target="_blank">🗺️ 鎌倉 Map</a>
+                    <div class="card-header">
+                        <span class="time-badge">11:00</span>
+                        <span class="title-text">鎌倉/江之島沿線觀光</span>
+                        <button class="map-trigger" onclick="updateMap('🚂 鎌倉高校前', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3255.0877864478143!2d139.5020964!3d35.3067268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60184f07e594d2db%3A0xdf1692ec7bbf86e!2sKamakurak高校前駅!5e0!3m2!1szh-HK!2sjp!4v1710000000006')">🗺️ 平交道</button>
+                    </div>
+                    <div class="notes">到達鎌倉站後，購買江之電一日券，搭乘復古嘅江之電沿線遊玩。必睇重點：鎌倉高校前平交道（睇江之電通過平交道、海景）、長谷站落車睇長谷大佛、七里濱海岸散步。</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="time-badge">17:00</span>
+                        <span class="title-text">移動：鎌倉 → 錦糸町</span>
+                    </div>
+                    <div class="notes">由鎌倉站原路搭乘 JR 橫須賀線/總武線快速直通返回錦糸町站。回程小朋友通常會瞓覺，Green Car 可以俾佢哋舒服休息。</div>
                 </div>
             </div>
             <div>
-                <h2 class="section-title">美食推薦</h2>
+                <h2 class="section-title">🍴 當日美食推薦</h2>
                 <div class="card">
-                    <div class="time-row"><span class="time-badge">12:30</span><span class="title-text">江之島小屋 / 藏壽司</span></div>
-                    <div class="notes">江之島小屋推薦海鮮飯。藏壽司（鎌倉店）有扭蛋抽獎，小朋友最開心。</div>
-                    <a class="map-link" href="https://maps.google.com/?q=Enoshima+Koya" target="_blank">🗺️ 餐廳地圖</a>
+                    <div class="card-header">
+                        <span class="title-text">1. 江之島小屋</span>
+                        <button class="map-trigger" onclick="updateMap('🍴 江之島小屋', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3255.0210217592885!2d139.4851214!3d35.3083756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60184ee49419eb31%3A0x6b872b2ff543cf71!2sEnoshima%20Koya!5e0!3m2!1szh-HK!2sjp!4v1710000000007')">🗺️ 店舖</button>
+                    </div>
+                    <div class="notes">靠近片瀨江之島站，面向大海。必食招牌片瀨漁港直送海鮮飯、炸魚餅，景觀一流。</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="title-text">2. 藏壽司 (鎌倉店)</span>
+                        <button class="map-trigger" onclick="updateMap('🍴 藏壽司', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3254.3414595221316!2d139.544717!3d35.3251433!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601845942475510b%3A0xb3fcba9e6b643a68!2sKura%20Sushi%20Kamakura!5e0!3m2!1szh-HK!2sjp!4v1710000000008')">🗺️ 店舖</button>
+                    </div>
+                    <div class="notes">平價迴轉壽司，食夠 5 碟可以將個盤放入回收槽玩扭蛋抽獎，小朋友最開心，大人又可以食得輕鬆。</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="title-text">3. とびっちょ (江之島本店)</span>
+                        <button class="map-trigger" onclick="updateMap('🍴 とびっちょ', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3255.438590480393!2d139.4795328!3d35.2980598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60184e94b29bbbbb%3A0x2dbbe4537ccbdcf3!2sTobicho%20Enoshima!5e0!3m2!1szh-HK!2sjp!4v1710000000009')">🗺️ 店舖</button>
+                    </div>
+                    <div class="notes">湘南名物魩仔魚 (しらす) 丼專門店，大碗抵食，推薦熟魩仔魚丼，份量超大<strong>性價比極高</strong>。</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="time-badge">19:00</span>
+                        <span class="title-text">晚餐：野郎壽司 (錦糸町店)</span>
+                        <button class="map-trigger" onclick="updateMap('🍴 野郎壽司', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.2869151240217!2d139.8113401!3d35.703144!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018894a457494cb%3A0x6b64d3667eb5097f!2z6YeO6YOO5a-95Y-4IOWMp-ezueeUuuW6lw!5e0!3m2!1szh-HK!2sjp!4v1710000000010')">🗺️ 店舖</button>
+                    </div>
+                    <div class="notes">位於錦糸町站前嘅老牌壽司店，食材新鮮、價錢合理，壽司拼盤好抵食，可以體驗正宗日式壽司店氛圍。</div>
                 </div>
             </div>
         </div>
     </div>
 
     <div id="day3" class="day-content">
-        <div class="hotel-card">
-            <h3>🏠 住宿：東京 Airbnb (Day 3)</h3>
-            <p>2-chome-9-5 Taihei, Sumida City, Tokyo</p>
-        </div>
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3231.579603378564!2d139.6161477!3d35.9213197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018c1598463f8e5%3A0x959737c768999!2sThe%20Railway%20Museum!5e0!3m2!1zhk!2sjp!4v1700000000002"></iframe>
-        </div>
-        <div class="grid">
+        <div class="hotel-card" onclick="updateMap('🏠 東京 Airbnb', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.233519827471!2d139.8144005!3d35.7044574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ed67d16bb03%3A0x6335a165df8a5a40!2s2-chome-9-5%20Taihei%2C%20Sumida%20City%2C%20Tokyo%20130-0012!5e0!3m2!1szh-HK!2sjp!4v1710000000001')">
             <div>
-                <h2 class="section-title">行程與交通</h2>
+                <h3>🏠 住宿：東京 Airbnb (Day 3)</h3>
+                <p>續住墨田區太平 Airbnb</p>
+            </div>
+            <span class="map-trigger">🗺️ 定位</span>
+        </div>
+
+        <div class="info-grid">
+            <div>
+                <h2 class="section-title">📍 行程活動 & 交通動線</h2>
                 <div class="card">
-                    <div class="time-row"><span class="time-badge">10:00</span><span class="title-text">大宮鐵路博物館</span></div>
-                    <div class="notes">門票須預購。必睇實體火車、開火車體驗及 JR 官網周邊。</div>
-                    <a class="map-link" href="https://maps.google.com/?q=Railway+Museum+Omiya" target="_blank">🗺️ 鐵博 Map</a>
+                    <div class="card-header">
+                        <span class="time-badge">09:00</span>
+                        <span class="title-text">移動：錦糸町 → 大宮</span>
+                    </div>
+                    <div class="notes">由錦糸町搭總武線各站停車去秋葉原站，轉乘 JR 宇都宮線或高崎線前往大宮站。到大宮站後轉乘 New Shuttle (大宮內陸線) 喺鐵道博物館站落車。</div>
                 </div>
                 <div class="card">
-                    <div class="time-row"><span class="time-badge">16:15</span><span class="title-text">日暮里下御隱殿橋</span></div>
-                    <div class="notes">全東京最著名的「睇火車聖地」，可同時睇 10 條線並行。</div>
+                    <div class="card-header">
+                        <span class="time-badge">10:00</span>
+                        <span class="title-text">大宮鐵路博物館</span>
+                        <button class="map-trigger" onclick="updateMap('🚂 鐵道博物館', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3229.479634704778!2d139.6163355!3d35.922119!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018c1440409a8d7%3A0x5ef470b135064e4!2z6鉄道博物館!5e0!3m2!1szh-HK!2sjp!4v1710000000011')">🗺️ 景點</button>
+                    </div>
+                    <div class="notes">鐵道迷必去聖地！<strong>門票必須提早預購</strong> (日本 7-11/FamilyMart)。入面可以睇到超多實體退役火車、模擬開火車體驗，仲有最齊全嘅新幹線火車模型同 JR 官方周邊。</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="time-badge">15:30</span>
+                        <span class="title-text">移動：大宮 → 日暮里</span>
+                    </div>
+                    <div class="notes">在大宮站搭乘 JR 京濱東北線或者宇都宮線，直達日暮里站。車程大約 25-30 分鐘。</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="time-badge">16:15</span>
+                        <span class="title-text">日暮里下御隱殿橋</span>
+                        <button class="map-trigger" onclick="updateMap('🌉 下御隱殿橋', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3238.90564554316!2d139.7712395!3d35.7273145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188dd03cd15555%3A0xbf302f30ca88383a!2z5LiL5b6h6ZqA6b6f5qmL!5e0!3m2!1szh-HK!2sjp!4v1710000000012')">🗺️ 天橋</button>
+                    </div>
+                    <div class="notes">全東京最著名嘅「睇火車聖地」天橋。喺橋上面可以同時睇到新幹線（E5, E6, E7 等）同多條通勤線並行，最多可以看見 10 條鐵軌並列，小朋友一定睇到哇哇聲。</div>
                 </div>
             </div>
             <div>
-                <h2 class="section-title">美食推薦</h2>
+                <h2 class="section-title">🍴 當日美食推薦</h2>
                 <div class="card">
-                    <div class="time-row"><span class="time-badge">12:30</span><span class="title-text">新幹線造型便當</span></div>
-                    <div class="notes">喺博物館內買 E5/E6 造型便當，膠盒可以帶返香港做玩具。</div>
+                    <div class="card-header">
+                        <span class="title-text">1. 博物館限定火車便當</span>
+                    </div>
+                    <div class="notes">一定要去買新幹線造型便當 (例如 E5/E6/Dr. Yellow 造型)，個膠盒吃完可以清洗乾淨帶返香港做火車玩具，極有紀念價值。</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="title-text">2. ecute 大宮熟食美食街</span>
+                        <button class="map-trigger" onclick="updateMap('🍴 ecute 大宮', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3229.74312879545!2d139.6225791!3d35.9156488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018c14397732d89%3A0xee4ca4515610ec11!2secute%20Omiya!5e0!3m2!1szh-HK!2sjp!4v1710000000013')">🗺️ 美食街</button>
+                    </div>
+                    <div class="notes">大宮站內嘅大型美食街，有極多高質素又平嘅日式便當、炸豬排、串燒、鯛魚燒，可以買完去專用座位區食。</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="time-badge">18:30</span>
+                        <span class="title-text">晚餐：鳥貴族 (錦糸町北口店)</span>
+                        <button class="map-trigger" onclick="updateMap('🍴 鳥貴族錦糸町', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.233519827471!2d139.8144005!3d35.7044574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ed40e4f0a07%3A0x6b4a3c137456d987!2z6bOl6LKycU9S44CA6Yym57O555S65YyX5Y-j5bqX!5e0!3m2!1szh-HK!2sjp!4v1710000000014')">🗺️ 店舖</button>
+                    </div>
+                    <div class="notes">全店均一價嘅連鎖串燒店。點餐用平板有中文同圖，啱晒家庭聚餐，嘢食平又大份，雞肉串燒同釜飯必點。</div>
                 </div>
             </div>
         </div>
     </div>
 
     <div id="day4" class="day-content">
-        <div class="hotel-card">
-            <h3>🏠 住宿：東京 Airbnb (Day 4)</h3>
-            <p>2-chome-9-5 Taihei, Sumida City, Tokyo</p>
-        </div>
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.828030380846!2d139.7176465!3d35.688584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188cf8f4c478a5%3A0x6e2f1e6000000000!2sTokyo%20Fire%20Museum!5e0!3m2!1zhk!2sjp!4v1700000000003"></iframe>
-        </div>
-        <div class="grid">
+        <div class="hotel-card" onclick="updateMap('🏠 東京 Airbnb', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.233519827471!2d139.8144005!3d35.7044574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ed67d16bb03%3A0x6335a165df8a5a40!2s2-chome-9-5%20Taihei%2C%20Sumida%20City%2C%20Tokyo%20130-0012!5e0!3m2!1szh-HK!2sjp!4v1710000000001')">
             <div>
-                <h2 class="section-title">行程與交通</h2>
+                <h3>🏠 住宿：東京 Airbnb (Day 4)</h3>
+                <p>最後一晚墨田區住宿</p>
+            </div>
+            <span class="map-trigger">🗺️ 定位</span>
+        </div>
+
+        <div class="info-grid">
+            <div>
+                <h2 class="section-title">📍 行程活動 & 交通動線</h2>
                 <div class="card">
-                    <div class="time-row"><span class="time-badge">09:30</span><span class="title-text">消防博物館</span></div>
-                    <div class="notes"><strong>免費入場</strong>。小朋友可以坐消防直升機、試穿消防服。</div>
+                    <div class="card-header">
+                        <span class="time-badge">09:30</span>
+                        <span class="title-text">消防博物館</span>
+                        <button class="map-trigger" onclick="updateMap('🚒 消防博物館', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.6625890899127!2d139.7214555!3d35.6890477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ce74d283f5d%3A0xe79133b1e327a3c3!2z5raI6Ziy5Y2a54mp6akq!5e0!3m2!1szh-HK!2sjp!4v1710000000015')">🗺️ 景點</button>
+                    </div>
+                    <div class="notes"><strong>完全免費入場</strong>嘅親子神級景點！室內展示咗超多退役消防車，重點係可以坐入去消防直升機嘅駕駛艙入面影相，仲有消防員制服可以俾小朋友免費試穿體驗。</div>
                 </div>
                 <div class="card">
-                    <div class="time-row"><span class="time-badge">14:30</span><span class="title-text">代代木踏切巡禮</span></div>
-                    <div class="notes">攻略「新宿 1 號踏切」、「青山街道踏切」。</div>
+                    <div class="card-header">
+                        <span class="time-badge">13:30</span>
+                        <span class="title-text">鐵道馬拉松動線（新宿1號踏切）</span>
+                        <button class="map-trigger" onclick="updateMap('🚂 新宿1號平交道', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.9419137453004!2d139.6991195!3d35.682163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188cd500a88001%3A0x6b8d4e9dfd00ef7!2z5paw5a6_MeiZn-i4j-WIhw!5e0!3m2!1szh-HK!2sjp!4v1710000000016')">🗺️ 平交道</button>
+                    </div>
+                    <div class="notes">步行開始鐵道探險。首先攻略「新宿 1 號平交道（小田急線）」，近距離睇列車頻繁通過平交道。</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="time-badge">14:30</span>
+                        <span class="title-text">代代木/青山街道踏切</span>
+                        <button class="map-trigger" onclick="updateMap('🚂 青山街道踏切', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.222384955743!2d139.703214!3d35.67525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188cb855555555%3A0xbebe00dfef0e99b0!2z6Z2S5bGx6KGX6YGT6踏切!5e0!3m2!1szh-HK!2sjp!4v1710000000017')">🗺️ 平交道</button>
+                    </div>
+                    <div class="notes">沿鐵路行去代代木站周邊，攻略「青山街道踏切」，呢度係城市中非常有風味嘅level crossing，可以近距離安全觀察列車運作。</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="time-badge">17:30</span>
+                        <span class="title-text">竹芝行人天橋</span>
+                        <button class="map-trigger" onclick="updateMap('🌉 竹芝天橋', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3242.062164805!2d139.7615!3d35.6545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bc277777777%3A0xdedefefedede001!2z56u56Iqd44Od44O844OI44Op44O844I_!5e0!3m2!1szh-HK!2sjp!4v1710000000018')">🗺️ 觀景台</button>
+                    </div>
+                    <div class="notes">睇夜景極佳地點。可以近距離、平視角度捕捉到「東京單軌電車 (Tokyo Monorail)」進出站嘅畫面，背景仲可以睇到彩虹大橋同東京灣夜景。</div>
                 </div>
             </div>
             <div>
-                <h2 class="section-title">美食推薦</h2>
+                <h2 class="section-title">🍴 當日美食推薦</h2>
                 <div class="card">
-                    <div class="time-row"><span class="time-badge">12:00</span><span class="title-text">丸龜製麵 / なか卯</span></div>
-                    <div class="notes">性價比極高，烏冬、親子丼係小朋友最愛。</div>
+                    <div class="card-header">
+                        <span class="title-text">1. 丸龜製麵 (新宿東口店)</span>
+                        <button class="map-trigger" onclick="updateMap('🍴 丸龜製麵', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.899012!3d139.70222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188cddec555555%3A0xbcbcbcbcbcbcbc!2z5Li46b6c6KO96bq1IOaWsOW_v-adseePo-WPoA!5e0!3m2!1szh-HK!2sjp!4v1710000000019')">🗺️ 店舖</button>
+                    </div>
+                    <div class="notes">全日本<strong>性價比最高</strong>嘅現做烏冬店，炸物（炸蝦、炸番薯）新鮮香脆，熱烏冬湯底好啱小朋友口味，既便宜又飽肚。</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="title-text">2. なか卯 (濱松町店)</span>
+                        <button class="map-trigger" onclick="updateMap('🍴 なか卯 濱松町', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3242.0112!3d139.7558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bc555555555%3A0xadadadadadadad!2z44Gq44GL5Y2vIOeHamU55S65bqX!5e0!3m2!1szh-HK!2sjp!4v1710000000020')">🗺️ 店舖</button>
+                    </div>
+                    <div class="notes">日本平價四大連鎖店之一，主打親子丼（滑蛋雞肉飯）同烏冬，用自動販賣機點餐，價格極平，出餐速度極快。</div>
                 </div>
             </div>
         </div>
     </div>
 
     <div id="day5" class="day-content">
-        <div class="hotel-card">
-            <h3>🏨 住宿：仙台站前 Dormy Inn (Day 5-7)</h3>
-            <p>宮城縣仙台市青葉區本町 1-5-38 (仙台站西口步行 5 分鐘)</p>
-        </div>
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.7381273945536!2d140.8798363!3d38.2612347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a2817d235c5c1%3A0xf6f6f6f6f6f6f6f6!2sDormy%20Inn%20Sendai%20Eki-mae!5e0!3m2!1zhk!2sjp!4v1700000000004"></iframe>
-        </div>
-        <div class="grid">
+        <div class="hotel-card" onclick="updateMap('🏨 仙台 Dormy Inn', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.81237303033!2d140.8795551!3d38.2635388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a28236d6df727%3A0xdfc0cdb53cbdd880!2zRG9ybXkgSW5uIFNlbmRhaSBFa2ltYWU!5e0!3m2!1szh-HK!2sjp!4v1710000000021')">
             <div>
-                <h2 class="section-title">行程與交通</h2>
+                <h3>🏨 住宿：仙台站前 Dormy Inn (Day 5-7)</h3>
+                <p>宮城縣仙台市青葉區本町 1-5-38 (從仙台站西口步行約5分鐘)</p>
+            </div>
+            <span class="map-trigger">🗺️ 定位</span>
+        </div>
+
+        <div class="info-grid">
+            <div>
+                <h2 class="section-title">📍 行程活動 & 交通動線</h2>
                 <div class="card">
-                    <div class="time-row"><span class="time-badge">10:00</span><span class="title-text">東京站一番街</span></div>
-                    <div class="notes"><strong>行李寄送：</strong>喺東京站黑貓櫃位寄大行李去仙台。輕裝行 Plarail Shop。</div>
+                    <div class="card-header">
+                        <span class="time-badge">10:00</span>
+                        <span class="title-text">東京站一番街</span>
+                        <button class="map-trigger" onclick="updateMap('🛒 東京站一番街', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.828!2d139.767!3d35.681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bfbd89f72e5%3A0x60032fcf!2z5p2x5Lqs6aeF5LiA6Zqq6KGX!5e0!3m2!1szh-HK!2sjp!4v1710000000022')">🗺️ 購物</button>
+                    </div>
+                    <div class="notes">出發去東北前嘅大攻略。<strong>先去東京站內黑貓宅急便櫃位辦理行李寄送，將大行李直送仙台酒店</strong>。然後全家輕裝去橫掃 Plarail Shop (火車玩具店) 同 TRAINIART (鐵道文具紀念品店)。</div>
                 </div>
                 <div class="card">
-                    <div class="time-row"><span class="time-badge">17:15</span><span class="title-text">福島站連結儀式</span></div>
-                    <div class="notes"><strong>重頭戲：</strong>17:30 在福島站 14 號月台睇 E5 + E6 解體連結。</div>
-                    <a class="map-link" href="https://maps.google.com/?q=Fukushima+Station+JR" target="_blank">🗺️ 福島站 Map</a>
+                    <div class="card-header">
+                        <span class="time-badge">17:15</span>
+                        <span class="title-text">福島站月台連結儀式</span>
+                        <button class="map-trigger" onclick="updateMap('🚅 福島站14月台', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.2144!2d140.4578!3d37.7544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a0021c32c5e55%3A0x4a4a4a4a4a4a4a4a!2z56aP5bO26aeF!5e0!3m2!1szh-HK!2sjp!4v1710000000023')">🗺️ 月台</button>
+                    </div>
+                    <div class="notes"><strong>今日重頭戲！</strong> 行程重點：17:30 前去到<strong>福島站 14 號月台</strong>，親眼睇住綠色 E5 系 (Yamabiko) 同紅色 E6 系 (Tsubasa) 新幹線喺月台進行解體/連結儀式，小朋友睇到一定瘋狂。</div>
                 </div>
             </div>
             <div>
-                <h2 class="section-title">美食推薦</h2>
+                <h2 class="section-title">🍴 當日美食推薦</h2>
                 <div class="card">
-                    <div class="time-row"><span class="time-badge">20:00</span><span class="title-text">善治郎牛舌 / 免費拉麵</span></div>
-                    <div class="notes">仙台必食善治郎。返到 Dormy Inn 仲有 21:30 免費夜鳴拉麵。</div>
+                    <div class="card-header">
+                        <span class="title-text">1. 全日本最齊全火車便當「祭」</span>
+                    </div>
+                    <div class="notes">位於東京站閘內中央通路。聚集咗全日本各地的特色火車便當。一定要買 E5 系隼號、E6 系小町號新幹線造型便當，帶上新幹線開車後同小朋友一齊食。</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="title-text">2. 東京拉麵街 (一番街地庫)</span>
+                    </div>
+                    <div class="notes">雲集咗東京 8 間頂級拉麵名店（如六厘舍沾麵、斑鳩拉麵），每間都有自動售票機，選排隊人流較少嘅入去食。</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="title-text">3. 炭火燒牛舌 善治郎 (站前本店)</span>
+                        <button class="map-trigger" onclick="updateMap('🍴 善治郎牛舌', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.899!2d140.882!3d38.260!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a281765555555%3A0x8c8c8c8c8c8c8c8c!2z6KJW54Gr54S854mb6IiMIOWWhOaybuODjg!5e0!3m2!1szh-HK!2sjp!4v1710000000024')">🗺️ 店舖</button>
+                    </div>
+                    <div class="notes">仙台名物牛舌。善治郎喺在地人中評價極高，炭火味好香，牛舌厚身爽口，配埋牛尾湯、麥飯，雖然要排隊但<strong>性價比絕對對得住質素</strong>。</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="title-text">4. 酒店免費「夜鳴拉麵」</span>
+                    </div>
+                    <div class="notes">帶小朋友去酒店大浴場浸完溫泉之後，一定要去餐廳享用 Dormy Inn 招牌嘅 <strong>21:30 免費醬油拉麵宵夜</strong>，味道好又免費用餐。</div>
                 </div>
             </div>
         </div>
     </div>
 
     <div id="day6" class="day-content">
-        <div class="hotel-card">
-            <h3>🏨 住宿：仙台站前 Dormy Inn (Day 6)</h3>
-        </div>
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12513.784411136774!2d141.0336214!3d38.3686895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f89998188151515%3A0x5050505050505050!2sMatsushima%2C%20Miyagi!5e0!3m2!1zhk!2sjp!4v1700000000005"></iframe>
-        </div>
-        <div class="grid">
+        <div class="hotel-card" onclick="updateMap('🏨 仙台 Dormy Inn', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.81237303033!2d140.8795551!3d38.2635388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a28236d6df727%3A0xdfc0cdb53cbdd880!2zRG9ybXkgSW5uIFNlbmRhaSBFa2ltYWU!5e0!3m2!1szh-HK!2sjp!4v1710000000021')">
             <div>
-                <h2 class="section-title">行程與交通</h2>
+                <h3>🏨 住宿：仙台站前 Dormy Inn (Day 6)</h3>
+                <p>續住仙台 Dormy Inn</p>
+            </div>
+            <span class="map-trigger">🗺️ 定位</span>
+        </div>
+
+        <div class="info-grid">
+            <div>
+                <h2 class="section-title">📍 行程活動 & 交通動線</h2>
                 <div class="card">
-                    <div class="time-row"><span class="time-badge">09:30</span><span class="title-text">仙台觀光巴士</span></div>
-                    <div class="notes">搭 Loople 巴士去青葉城址睇伊達政宗像。</div>
+                    <div class="card-header">
+                        <span class="time-badge">09:30</span>
+                        <span class="title-text">仙台市內觀光 (青葉城址)</span>
+                        <button class="map-trigger" onclick="updateMap('🏯 青葉城址', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3133.201!2d140.854!3d38.252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a284077777777%3A0x7b7b7b7b7b7b7b7b!2z6Z2S6JGJ5Z-O6Leh!5e0!3m2!1szh-HK!2sjp!4v1710000000025')">🗺️ 遺跡</button>
+                    </div>
+                    <div class="notes">在仙台站西口搭乘<strong>盧葡兒 (Loople) 復古觀光巴士</strong>穿梭仙台。去青葉城址睇伊達政宗騎馬銅像，呢度可以俯瞰整個仙台市全景，風景開揚。</div>
                 </div>
                 <div class="card">
-                    <div class="time-row"><span class="time-badge">13:30</span><span class="title-text">松島海岸觀光</span></div>
-                    <div class="notes">日本三景之一。JR 仙石線直達。</div>
-                    <a class="map-link" href="https://maps.google.com/?q=Matsushima+Kaigan+Station" target="_blank">🗺️ 松島 Map</a>
+                    <div class="card-header">
+                        <span class="time-badge">13:30</span>
+                        <span class="title-text">松島海岸沿線觀光</span>
+                        <button class="map-trigger" onclick="updateMap('🌊 松島福浦橋', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3129.567!2d141.066!3d38.371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f89993333333333%3A0x2a2a2a2a2a2a2a2a!2z56aP5rWm5bO2!5e0!3m2!1szh-HK!2sjp!4v1710000000026')">🗺️ 景點</button>
+                    </div>
+                    <div class="notes">日本三景之一。可以帶小朋友沿著朱紅色的「福浦橋」行去福浦島散步，沿途睇松島灣千百個小島嘅奇景。車程交通：由仙台站搭 <strong>JR 仙石線</strong> 到松島海岸站約 40 分鐘。</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="time-badge">16:30</span>
+                        <span class="title-text">新幹線觀景窗 (仙台站)</span>
+                    </div>
+                    <div class="notes">回到仙台站後，帶小朋友去 <strong>3 樓嘅新幹線觀景窗 (新幹線見学エリア)</strong>，隔住玻璃近距離睇 E5/E6 新幹線開出。喺站內買仙台限定嘅火車玩具周邊。</div>
                 </div>
             </div>
             <div>
-                <h2 class="section-title">美食推薦</h2>
+                <h2 class="section-title">🍴 當日美食推薦</h2>
                 <div class="card">
-                    <div class="time-row"><span class="time-badge">14:00</span><span class="title-text">松島魚市場 / 烤魚餅</span></div>
-                    <div class="notes">平價海鮮丼。阿部蒲鉾店可以自己動手烤魚餅。</div>
+                    <div class="card-header">
+                        <span class="title-text">1. 松島魚市場</span>
+                        <button class="map-trigger" onclick="updateMap('🍴 松島魚市場', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3129.5!2d141.06!3d38.372!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f899931efefefef%3A0x1b1b1b1b1b1b1b1b!2z5p2b5bO26a2a5biC6aC0!5e0!3m2!1szh-HK!2sjp!4v1710000000027')">🗺️ 市場</button>
+                    </div>
+                    <div class="notes">海鮮愛好者天堂。入面可以買到非常便宜嘅平價海鮮丼、鮪魚壽司，旁邊仲有烤蠔小屋，可以用最實惠嘅批發價食到新鮮海產。</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="title-text">2. 阿部蒲鉾店 (烤魚餅體驗)</span>
+                        <button class="map-trigger" onclick="updateMap('🍴 阿部蒲鉾店', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.89!2d140.875!3d38.26!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a28172eaeaeae%3A0x2c2c2c2c2c2c2c2c!2z6Zi_6YOo6JKb6Ym95bqX!5e0!3m2!1szh-HK!2sjp!4v1710000000028')">🗺️ 店舖</button>
+                    </div>
+                    <div class="notes">仙台名物魚餅。呢度可以花幾百日圓買塊生魚餅，自己擺喺炭火爐上面動手烤（大約烤 10 分鐘變金黃色），好玩又好食，小朋友極鍾意。</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="title-text">3. 大眾食堂 半田屋 (東口店)</span>
+                        <button class="map-trigger" onclick="updateMap('🍴 半田屋東口店', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.9!2d140.886!3d38.26!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a28198f8f8f8f%3A0x3d3d3d3d3d3d3d3d!2z5Y2K55Sw5bGLIOadseWPoOW6lw!5e0!3m2!1szh-HK!2sjp!4v1710000000029')">🗺️ 食堂</button>
+                    </div>
+                    <div class="notes">號稱「仙台在地人的廚房」。採用自助拿菜拿便當嘅平民食堂模式，價格低到令人震驚，<strong>大碗抵食、款式多</strong>，可以揀啱小朋友嘅燉肉、玉子燒等。</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="title-text">4. 餃子步兵 (仙台一番町店)</span>
+                        <button class="map-trigger" onclick="updateMap('🍴 餃子步兵', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.9!2d140.871!3d38.26!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a2839b2b2b2b2%3A0x4e4e4e4e4e4e4e4e!2z6bql5a2Q5bip5YW1IOS7meWPsOS4gOeVquW6lw!5e0!3m2!1szh-HK!2sjp!4v1710000000030')">🗺️ 店舖</button>
+                    </div>
+                    <div class="notes">來自京都祇園嘅超人氣平價餃子名店。主打皮薄酥脆嘅生薑餃子（無大蒜味，好啱小朋友），一盤一口一個，價格親民。</div>
                 </div>
             </div>
         </div>
@@ -347,40 +622,70 @@
 
     <div id="day7" class="day-content">
         <div class="hotel-card">
-            <h3>🏠 準備回程 (Day 7)</h3>
-            <p>航班：UO897 (仙台 -> 香港)</p>
-        </div>
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3136.9634281729355!2d140.916892!3d38.136894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a176840700000%3A0xe6e6e6e6e6e6e6e6!2sSendai%20Airport!5e0!3m2!1zhk!2sjp!4v1700000000006"></iframe>
-        </div>
-        <div class="grid">
             <div>
-                <h2 class="section-title">行程與交通</h2>
+                <h3>✈️ 今日回程航班：UO897</h3>
+                <p>預定起飛時間：13:30 (仙台機場 -> 香港)</p>
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div>
+                <h2 class="section-title">📍 行程活動 & 交通動線</h2>
                 <div class="card">
-                    <div class="time-row"><span class="time-badge">08:30</span><span class="title-text">仙台早市</span></div>
-                    <div class="notes">買當季水果、士多啤梨。去機場前取回行李。</div>
-                    <a class="map-link" href="https://maps.google.com/?q=Sendai+Morning+Market" target="_blank">🗺️ 早市 Map</a>
+                    <div class="card-header">
+                        <span class="time-badge">08:30</span>
+                        <span class="title-text">仙台早市</span>
+                        <button class="map-trigger" onclick="updateMap('🛒 仙台早市', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.923!2d140.880!3d38.259!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a2817bfbfbfbf%3A0x5a5a5a5a5a5a5a5a!2z5仙台5pyd5biC!5e0!3m2!1szh-HK!2sjp!4v1710000000031')">🗺️ 早市</button>
+                    </div>
+                    <div class="notes">最後衝刺！早市有「仙台的廚房」之稱，雖然短短一條街但好熱鬧。推薦帶小朋友去買現切嘅當季日本水果（5 月有機會買到高質士多啤梨、溫室生果），仲有平價飯糰、炸可樂餅等。行李可先存在仙台站儲物櫃。</div>
                 </div>
                 <div class="card">
-                    <div class="time-row"><span class="time-badge">11:00</span><span class="title-text">仙台站 → 機場</span></div>
-                    <div class="notes">搭機場 Access 線直達。</div>
+                    <div class="card-header">
+                        <span class="time-badge">11:00</span>
+                        <span class="title-text">移動：仙台站 → 仙台機場</span>
+                    </div>
+                    <div class="notes">在仙台站搭乘 <strong>仙台機場 Access 線</strong> 鐵路直達機場。車程約 25 分鐘。去機場前取回存放在車站的行李。</div>
                 </div>
             </div>
             <div>
-                <h2 class="section-title">美食推薦</h2>
+                <h2 class="section-title">🍴 當日美食推薦</h2>
                 <div class="card">
-                    <div class="time-row"><span class="time-badge">12:00</span><span class="title-text">毛豆泥奶昔</span></div>
-                    <div class="notes">上機前必飲 <strong>Zunda Saryo</strong> 奶昔。</div>
+                    <div class="card-header">
+                        <span class="title-text">1. 菓匠三全 Zunda Saryo 毛豆泥奶昔</span>
+                        <button class="map-trigger" onclick="updateMap('🥤 毛豆泥奶昔(機場)', 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3137.4!2d140.928!3d38.139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f89a1bdeeeeeeee%3A0x6b6b6b6b6b6b6b6b!2z6YqO6Y6v5LiJ5YWoIOOBmuOCk-OBoOiy6g!5e0!3m2!1szh-HK!2sjp!4v1710000000032')">🗺️ 機場店</button>
+                    </div>
+                    <div class="notes">仙台必食終極名物！上飛機前一定要喺機場買一杯招牌「毛豆泥奶昔」，口感濃郁帶有碎毛豆香，甜甜地小朋友超鍾意。</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="title-text">2. 機場美食廣場 (3 樓)</span>
+                    </div>
+                    <div class="notes">有拉麵、日式咖喱飯、炸雞塊等連鎖選擇，價格同市區差不多。可以喺登機前悠閒咁俾小朋友食飽。</div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 
 <script>
+    // 預設各日期的初始住宿地圖網址
+    const defaultMaps = {
+        1: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.233519827471!2d139.8144005!3d35.7044574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ed67d16bb03%3A0x6335a165df8a5a40!2s2-chome-9-5%20Taihei%2C%20Sumida%20City%2C%20Tokyo%20130-0012!5e0!3m2!1szh-HK!2sjp!4v1710000000001',
+        2: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.233519827471!2d139.8144005!3d35.7044574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ed67d16bb03%3A0x6335a165df8a5a40!2s2-chome-9-5%20Taihei%2C%20Sumida%20City%2C%20Tokyo%20130-0012!5e0!3m2!1szh-HK!2sjp!4v1710000000001',
+        3: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.233519827471!2d139.8144005!3d35.7044574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ed67d16bb03%3A0x6335a165df8a5a40!2s2-chome-9-5%20Taihei%2C%20Sumida%20City%2C%20Tokyo%20130-0012!5e0!3m2!1szh-HK!2sjp!4v1710000000001',
+        4: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.233519827471!2d139.8144005!3d35.7044574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ed67d16bb03%3A0x6335a165df8a5a40!2s2-chome-9-5%20Taihei%2C%20Sumida%20City%2C%20Tokyo%20130-0012!5e0!3m2!1szh-HK!2sjp!4v1710000000001',
+        5: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.81237303033!2d140.8795551!3d38.2635388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a28236d6df727%3A0xdfc0cdb53cbdd880!2zRG9ybXkgSW5uIFNlbmRhaSBFa2ltYWU!5e0!3m2!1szh-HK!2sjp!4v1710000000021',
+        6: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.81237303033!2d140.8795551!3d38.2635388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a28236d6df727%3A0xdfc0cdb53cbdd880!2zRG9ybXkgSW5uIFNlbmRhaSBFa2ltYWU!5e0!3m2!1szh-HK!2sjp!4v1710000000021',
+        7: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.923!2d140.880!3d38.259!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a2817bfbfbfbf%3A0x5a5a5a5a5a5a5a5a!2z5仙台5pyd5biC!5e0!3m2!1szh-HK!2sjp!4v1710000000031'
+    };
+
+    function updateMap(title, embedUrl) {
+        document.getElementById('map-title').innerText = '📍 當前位置: ' + title;
+        document.getElementById('live-map').src = embedUrl;
+    }
+
     function switchDay(dayNum) {
-        // 更新按鈕狀態
+        // 更新 Tab 按鈕狀態
         const buttons = document.querySelectorAll('.tab-btn');
         buttons.forEach((btn, index) => {
             if (index === (dayNum - 1)) {
@@ -390,22 +695,25 @@
             }
         });
 
-        // 更新顯示內容
+        // 更新顯示的內容欄
         const contents = document.querySelectorAll('.day-content');
         contents.forEach((content, index) => {
             if (index === (dayNum - 1)) {
                 content.style.display = 'block';
-                content.classList.add('active');
             } else {
                 content.style.display = 'none';
-                content.classList.remove('active');
             }
         });
+
+        // 切換日子時，自動把地圖轉去當天的預設地點（住宿地）
+        let defaultTitle = dayNum <= 4 ? '🏠 東京 Airbnb' : (dayNum === 7 ? '🛒 仙台早市' : '🏨 仙台 Dormy Inn');
+        updateMap(defaultTitle, defaultMaps[dayNum]);
         
+        // 滾動回頂部，方便看地圖
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // 初始化：顯示第一天並隱藏其他
+    // 網頁加載時，預設初始化第一天
     window.onload = function() {
         switchDay(1);
     };
