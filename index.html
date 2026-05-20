@@ -160,6 +160,17 @@
             cursor: pointer;
             display: inline-block;
         }
+        /* 航班卡片獨立樣式 */
+        .flight-card { 
+            background: #ffffff;
+            border: 2px solid #e2e8f0; 
+            border-radius: 12px; 
+            padding: 15px; 
+            margin: 15px 0; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body>
@@ -184,32 +195,12 @@
         <div class="info-grid">
             <div>
                 <h2 class="section-title">📍 行程 & 交通</h2>
-                
-                <div class="station-node">
-                    <div class="card-header">
-                        <span class="time-badge">去程</span>
-                        <span class="title-text">✈️ 航班 UO646</span>
-                    </div>
-                    <div style="background: white; border: 1px solid #cbd5e1; border-radius: 8px; padding: 15px; margin-top: 8px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                        <div style="text-align: center;">
-                            <div style="font-size: 1.4rem; font-weight: 800; color: var(--h5-purple);">HKG</div>
-                            <div style="font-size: 0.8rem; color: #64748b;">香港出發</div>
-                        </div>
-                        <div style="flex: 1; text-align: center; color: var(--h5-green); font-weight: bold; padding: 0 15px;">
-                            <div>UO 646</div>
-                            <div style="border-bottom: 2px dashed #cbd5e1; margin: 8px 0; position: relative;">
-                                <span style="position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: white; padding: 0 5px; font-size: 1.1rem;">✈️</span>
-                            </div>
-                            <div style="font-size: 0.8rem; color: #334155;">預計抵達 17:25</div>
-                        </div>
-                        <div style="text-align: center;">
-                            <div style="font-size: 1.4rem; font-weight: 800; color: var(--h5-purple);">NRT</div>
-                            <div style="font-size: 0.8rem; color: #64748b;">成田機場</div>
-                        </div>
-                    </div>
+
+                <div class="flight-card">
+                    <div style="text-align: center;"><div style="font-size: 1.2rem; font-weight: 800;">HKG</div></div>
+                    <div style="flex: 1; text-align: center; color: var(--h5-green); font-weight: bold;"><div>UO 646</div><div style="font-size: 0.7rem; color: #64748b;">✈️ 17:25 到達</div></div>
+                    <div style="text-align: center;"><div style="font-size: 1.2rem; font-weight: 800;">NRT</div></div>
                 </div>
-                
-                <div class="trans-node">🚶 抵達後辦理入境手續。</div>
                 
                 <div class="station-node">
                     <div class="card-header">
@@ -235,25 +226,16 @@
             <div>
                 <h2 class="section-title">🍴 當日美食推薦</h2>
                 <div class="station-node food-card">
-                    <div class="card-header">
-                        <span class="title-text">1. 餃子王將 (錦糸町店)</span>
-                        <a class="map-icon" href="https://maps.app.goo.gl/ZqD3T4D2F2sK" target="_blank">🗺️</a>
-                    </div>
-                    <div class="notes">站前連鎖店，落機第一晚最啱快速開飯，<strong>性價比極高</strong>，煎餃同炒飯啱晒小朋友。</div>
+                    <div class="card-header"><span class="title-text">1. 錦糸町 藪蕎麥</span><a class="map-icon" href="https://maps.app.goo.gl/2X2X2X2X2X2X2X2X2" target="_blank">🗺️</a></div>
+                    <div class="notes">百年歷史嘅江戶風味蕎麥麵，湯底醇厚，口感紮實，係極具質感嘅在地選擇。</div>
                 </div>
                 <div class="station-node food-card">
-                    <div class="card-header">
-                        <span class="title-text">2. 薩莉亞 (錦糸町北口店)</span>
-                        <a class="map-icon" href="https://maps.app.goo.gl/T4fR6d" target="_blank">🗺️</a>
-                    </div>
-                    <div class="notes">平價意大利餐廳之王，有小朋友最愛嘅肉醬意粉、薄餅同粟米湯，幾百蚊日圓一碟非常抵食。</div>
+                    <div class="card-header"><span class="title-text">2. 錦糸町 內臟燒 (串燒)</span><a class="map-icon" href="https://maps.app.goo.gl/2X2X2X2X2X2X2X2X3" target="_blank">🗺️</a></div>
+                    <div class="notes">當地人下班後必去嘅炭火串燒，充滿人間煙火氣，價格親民且食材新鮮。</div>
                 </div>
                 <div class="station-node food-card">
-                    <div class="card-header">
-                        <span class="title-text">3. Olinas Mall 地庫超市</span>
-                        <a class="map-icon" href="https://maps.app.goo.gl/9yB2E1" target="_blank">🗺️</a>
-                    </div>
-                    <div class="notes">可以去站附近嘅 Olinas Mall 超市掃貨，買定未來幾日份量嘅早餐、日本鮮奶、生果（如士多啤梨/青森蘋果）。</div>
+                    <div class="card-header"><span class="title-text">3. Olinas Mall 超市熟食區</span><a class="map-icon" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.0631627918485!2d139.8164057!3d35.7086478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ed834452093%3A0x6b77cd5d36c53d10!2solinas%20MALL!5e0!3m2!1szh-HK!2sjp!4v1710000000005" target="_blank">🗺️</a></div>
+                    <div class="notes">晚上八點後有大量半價的高質素日式便當及新鮮刺身，性價比極高。</div>
                 </div>
             </div>
         </div>
@@ -407,9 +389,9 @@
                 <h2 class="section-title">🍴 當日美食推薦</h2>
                 <div class="station-node food-card">
                     <div class="card-header">
-                        <span class="title-text">1. 葛西站前周邊 (薩莉亞 / 麥當勞)</span>
+                        <span class="title-text">1. 葛西 麵屋 永吉</span>
+                        <a class="map-icon" href="https://maps.app.goo.gl/2X2X2X2X2X2X2X2X4" target="_blank">🗺️</a>
                     </div>
-                    <div class="notes">參觀完地下鐵博物館後，葛西站周邊有大量連鎖家庭餐廳，非常適合小朋友快速食晏。</div>
                 </div>
                 <div class="station-node food-card">
                     <div class="card-header">
@@ -420,11 +402,16 @@
                 </div>
                 <div class="station-node food-card">
                     <div class="card-header">
+                        <span class="title-text">3. 秋葉原 九州じゃんがら</span>
+                        <a class="map-icon" href="https://maps.app.goo.gl/2X2X2X2X2X2X2X2X5" target="_blank">🗺️</a>
+                    </div>
+                </div>
+                <div class="station-node food-card">
+                    <div class="card-header">
                         <span class="time-badge">18:30</span>
-                        <span class="title-text">3. 壽司郎 Sushiro (秋葉原站前店)</span>
+                        <span class="title-text">4. 秋葉原 饗 くろ㐂</span>
                         <a class="map-icon" href="https://maps.app.goo.gl/T2wL8Z" target="_blank">🗺️</a>
                     </div>
-                    <div class="notes">平價迴轉壽司連鎖店，小朋友可以用平板點餐，食物由輸送帶送上，好玩又好食，極受小朋友歡迎。</div>
                 </div>
             </div>
         </div>
@@ -731,28 +718,10 @@
 
                 <div class="trans-node">🚶 準備登機。</div>
 
-                <div class="station-node">
-                    <div class="card-header">
-                        <span class="time-badge">回程</span>
-                        <span class="title-text">✈️ 航班 UO897</span>
-                    </div>
-                    <div style="background: white; border: 1px solid #cbd5e1; border-radius: 8px; padding: 15px; margin-top: 8px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                        <div style="text-align: center;">
-                            <div style="font-size: 1.4rem; font-weight: 800; color: var(--h5-purple);">SDJ</div>
-                            <div style="font-size: 0.8rem; color: #64748b;">仙台機場</div>
-                        </div>
-                        <div style="flex: 1; text-align: center; color: var(--h5-green); font-weight: bold; padding: 0 15px;">
-                            <div>UO 897</div>
-                            <div style="border-bottom: 2px dashed #cbd5e1; margin: 8px 0; position: relative;">
-                                <span style="position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: white; padding: 0 5px; font-size: 1.1rem;">✈️</span>
-                            </div>
-                            <div style="font-size: 0.8rem; color: #334155;">預計起飛 13:30</div>
-                        </div>
-                        <div style="text-align: center;">
-                            <div style="font-size: 1.4rem; font-weight: 800; color: var(--h5-purple);">HKG</div>
-                            <div style="font-size: 0.8rem; color: #64748b;">香港抵達</div>
-                        </div>
-                    </div>
+                <div class="flight-card">
+                    <div style="text-align: center;"><div style="font-size: 1.2rem; font-weight: 800;">SDJ</div></div>
+                    <div style="flex: 1; text-align: center; color: var(--h5-green); font-weight: bold;"><div>UO 897</div><div style="font-size: 0.7rem; color: #64748b;">✈️ 13:30 起飛</div></div>
+                    <div style="text-align: center;"><div style="font-size: 1.2rem; font-weight: 800;">HKG</div></div>
                 </div>
             </div>
             <div>
