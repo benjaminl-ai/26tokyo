@@ -34,7 +34,6 @@
         }
 
         header h1 { font-size: 1.3rem; font-weight: 800; }
-        .flight-tag { font-size: 0.8rem; background: rgba(0,0,0,0.2); display: inline-block; padding: 3px 10px; border-radius: 12px; margin-top: 6px; font-weight: bold; }
 
         /* 導航分頁 */
         .nav-tabs {
@@ -106,13 +105,13 @@
             border-left: 5px solid var(--h5-green);
             border-radius: 8px;
             padding: 14px;
-            margin-bottom: 0; /* 0間距以配合交通連接線 */
+            margin-bottom: 0;
             box-shadow: 0 1px 3px rgba(0,0,0,0.02);
         }
         
         .food-card {
-            margin-bottom: 12px; /* 餐廳為獨立選項，保留間距 */
-            border-left: 5px solid var(--h5-purple); /* 餐廳專屬顏色 */
+            margin-bottom: 12px;
+            border-left: 5px solid var(--h5-purple);
         }
 
         .trans-node {
@@ -167,7 +166,6 @@
 
 <header>
     <h1>🚅 2026 東京・仙台鐵道親子之旅</h1>
-    <div class="flight-tag">✈️ 去程: UO646 | 回程: UO897</div>
 </header>
 
 <div class="nav-tabs">
@@ -185,7 +183,7 @@
     <div id="day1" class="day-content active">
         <div class="info-grid">
             <div>
-                <h2 class="section-title">📍 行程活動 & 交通動線</h2>
+                <h2 class="section-title">📍 行程 & 交通</h2>
                 
                 <div class="station-node">
                     <div class="card-header">
@@ -193,7 +191,7 @@
                     </div>
                 </div>
                 
-                <div class="trans-node">✈️ 乘搭 UO646 航班前往東京，預計 17:25 抵達。</div>
+                <div class="trans-node">✈️ 乘搭 <a href="https://www.google.com/search?q=UO646" target="_blank" style="color: #1d4ed8; text-decoration: underline; font-weight: bold;">UO646 航班</a> 前往東京，預計 17:25 抵達。</div>
                 
                 <div class="station-node">
                     <div class="card-header">
@@ -209,7 +207,7 @@
                 <div class="station-node">
                     <div class="card-header">
                         <span class="time-badge">20:00</span>
-                        <span class="title-text">🏠 住宿：東京 Airbnb (Day 1-4)</span>
+                        <span class="title-text">🏠 東京 Airbnb (Day 1-4)</span>
                         <a class="map-icon" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.233519827471!2d139.8144005!3d35.7044574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ed67d16bb03%3A0x6335a165df8a5a40!2s2-chome-9-5%20Taihei%2C%20Sumida%20City%2C%20Tokyo%20130-0012!5e0!3m2!1szh-HK!2sjp!4v1710000000001" target="_blank">🗺️</a>
                     </div>
                     <div class="notes">墨田區 2-chome-9-5 Taihei</div>
@@ -246,12 +244,12 @@
     <div id="day2" class="day-content">
         <div class="info-grid">
             <div>
-                <h2 class="section-title">📍 行程活動 & 交通動線</h2>
+                <h2 class="section-title">📍 行程 & 交通</h2>
                 
                 <div class="station-node">
                     <div class="card-header">
                         <span class="time-badge">08:30</span>
-                        <span class="title-text">🏠 住宿：東京 Airbnb</span>
+                        <span class="title-text">🏠 東京 Airbnb</span>
                         <a class="map-icon" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.233519827471!2d139.8144005!3d35.7044574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ed67d16bb03%3A0x6335a165df8a5a40!2s2-chome-9-5%20Taihei%2C%20Sumida%20City%2C%20Tokyo%20130-0012!5e0!3m2!1szh-HK!2sjp!4v1710000000001" target="_blank">🗺️</a>
                     </div>
                 </div>
@@ -261,7 +259,7 @@
                 <div class="station-node">
                     <div class="card-header">
                         <span class="time-badge">09:45</span>
-                        <span class="title-text">階段一：湘南單軌電車 (大船站)</span>
+                        <span class="title-text">湘南單軌電車 (大船站)</span>
                         <a class="map-icon" href="https://maps.google.com/?cid=14768026785876565442&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank">🗺️</a>
                     </div>
                 </div>
@@ -271,7 +269,7 @@
                 <div class="station-node">
                     <div class="card-header">
                         <span class="time-badge">10:45</span>
-                        <span class="title-text">階段二：新江之島水族館</span>
+                        <span class="title-text">新江之島水族館</span>
                         <a class="map-icon" href="https://maps.app.goo.gl/5Q5Q5Q5Q5Q5Q5Q5Q1" target="_blank">🗺️</a>
                     </div>
                     <div class="notes">無障礙通道做得好好，推 BB 車行得好舒服。有巨大相模灣大水槽同埋背靠無敵大海嘅室外海豚表演，完美放電。</div>
@@ -282,7 +280,7 @@
                 <div class="station-node">
                     <div class="card-header">
                         <span class="time-badge">14:45</span>
-                        <span class="title-text">階段四：鎌倉高校前平交道</span>
+                        <span class="title-text">鎌倉高校前平交道</span>
                         <a class="map-icon" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3255.0877864478143!2d139.5020964!3d35.3067268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60184f07e594d2db%3A0xdf1692ec7bbf86e!2sKamakurak高校前駅!5e0!3m2!1szh-HK!2sjp!4v1710000000006" target="_blank">🗺️</a>
                     </div>
                     <div class="notes">一出站行前少少，睇綠色列車緩緩駛過平交道，背後配上波光粼粼嘅相模灣大海，係最經典嘅鐵道攝影構圖。</div>
@@ -293,7 +291,7 @@
                 <div class="station-node">
                     <div class="card-header">
                         <span class="time-badge">16:45</span>
-                        <span class="title-text">階段五：七里濱賞日落</span>
+                        <span class="title-text">七里濱賞日落</span>
                         <a class="map-icon" href="https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIABIhAGbyfQIhLfV2ekwAgACUS_!2e10!4m2!3m1!1s0x6018455e17aad4ab:0xccf2921e0da05dc2" target="_blank">🗺️</a>
                     </div>
                     <div class="notes">海岸線極長無遮擋，係鎌倉睇日落最高殿堂。小朋友可以玩下沙，望住太陽喺江之島（天氣好有富士山）背後落下。</div>
@@ -304,13 +302,13 @@
                 <div class="station-node">
                     <div class="card-header">
                         <span class="time-badge">19:30</span>
-                        <span class="title-text">🏠 住宿：東京 Airbnb</span>
+                        <span class="title-text">🏠 東京 Airbnb</span>
                         <a class="map-icon" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.233519827471!2d139.8144005!3d35.7044574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ed67d16bb03%3A0x6335a165df8a5a40!2s2-chome-9-5%20Taihei%2C%20Sumida%20City%2C%20Tokyo%20130-0012!5e0!3m2!1szh-HK!2sjp!4v1710000000001" target="_blank">🗺️</a>
                     </div>
                 </div>
             </div>
             <div>
-                <h2 class="section-title">🍴 當日美食推薦 (階段三)</h2>
+                <h2 class="section-title">🍴 當日美食推薦</h2>
                 <div class="station-node food-card">
                     <div class="card-header">
                         <span class="title-text">1. 海鮮 江之島小屋</span>
@@ -340,44 +338,44 @@
     <div id="day3" class="day-content">
         <div class="info-grid">
             <div>
-                <h2 class="section-title">📍 行程活動 & 交通動線</h2>
+                <h2 class="section-title">📍 行程 & 交通</h2>
                 
                 <div class="station-node">
                     <div class="card-header">
                         <span class="time-badge">09:00</span>
-                        <span class="title-text">🏠 住宿：東京 Airbnb</span>
+                        <span class="title-text">🏠 東京 Airbnb</span>
                         <a class="map-icon" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.233519827471!2d139.8144005!3d35.7044574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ed67d16bb03%3A0x6335a165df8a5a40!2s2-chome-9-5%20Taihei%2C%20Sumida%20City%2C%20Tokyo%20130-0012!5e0!3m2!1szh-HK!2sjp!4v1710000000001" target="_blank">🗺️</a>
                     </div>
                 </div>
 
-                <div class="trans-node">🚇 由錦糸町搭總武線各站停車去秋葉原站，轉乘 JR 宇都宮線或高崎線前往大宮站。到大宮站後轉乘 New Shuttle (大宮內陸線) 喺鐵道博物館站落車。</div>
+                <div class="trans-node">🚇 錦糸町搭乘總武線至「秋葉原站」，轉乘日比谷線至「茅場町站」，再轉東西線至「葛西站」。</div>
 
                 <div class="station-node">
                     <div class="card-header">
                         <span class="time-badge">10:00</span>
-                        <span class="title-text">大宮鐵路博物館</span>
-                        <a class="map-icon" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3229.479634704778!2d139.6163355!3d35.922119!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018c1440409a8d7%3A0x5ef470b135064e4!2z6鉄道博物館!5e0!3m2!1szh-HK!2sjp!4v1710000000011" target="_blank">🗺️</a>
+                        <span class="title-text">地下鐵博物館 (Chikahaku)</span>
+                        <a class="map-icon" href="https://maps.google.com/?cid=363328521834657465&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank">🗺️</a>
                     </div>
-                    <div class="notes">鐵道迷必去聖地！<strong>門票必須提早預購</strong> (日本 7-11/FamilyMart)。入面可以睇到超多實體退役火車、模擬開火車体验，仲有最齊全嘅新幹線火車模型同 JR 官方周邊。</div>
+                    <div class="notes">位於葛西站高架橋下。展出豐富，有模擬駕駛體驗同東京地鐵歷史，係小巧精緻嘅親子鐵道迷必去景點。</div>
                 </div>
 
-                <div class="trans-node">🚇 喺鐵道博物館搭乘 New Shuttle 返大宮站，轉乘 JR 京濱東北線或者宇都宮線，直達日暮里站 (車程大約 25-30 分鐘)。</div>
+                <div class="trans-node">🚇 搭乘東西線由「葛西站」至「茅場町站」，轉乘日比谷線至「秋葉原站」。</div>
 
                 <div class="station-node">
                     <div class="card-header">
-                        <span class="time-badge">16:15</span>
-                        <span class="title-text">日暮里下御隱殿橋</span>
-                        <a class="map-icon" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3238.90564554316!2d139.7712395!3d35.7273145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188dd03cd15555%3A0xbf302f30ca88383a!2z5LiL5b6h6ZqA6b6f5qmL!5e0!3m2!1szh-HK!2sjp!4v1710000000012" target="_blank">🗺️</a>
+                        <span class="time-badge">14:00</span>
+                        <span class="title-text">秋葉原 (電器街與模型店)</span>
+                        <a class="map-icon" href="https://maps.google.com/?cid=8588181514563389831&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank">🗺️</a>
                     </div>
-                    <div class="notes">全東京最著名嘅「睇火車聖地」天橋。喺橋上面可以同時睇到新幹線（E5, E6, E7 等）同多條通勤線並行，最多可以看見 10 條鐵軌並列，小朋友一定睇到哇哇聲。</div>
+                    <div class="notes">逛模型店及電子零件店，亦可喺車站附近天橋拍攝山手線/總武線列車交匯，順道尋找互動教學工具靈感。</div>
                 </div>
 
-                <div class="trans-node">🚇 喺日暮里搭乘 JR 常磐線轉總武線返回錦糸町。</div>
+                <div class="trans-node">🚇 喺秋葉原搭乘 JR 總武線各站停車直達返回錦糸町。</div>
 
                 <div class="station-node">
                     <div class="card-header">
                         <span class="time-badge">18:30</span>
-                        <span class="title-text">🏠 住宿：東京 Airbnb</span>
+                        <span class="title-text">🏠 東京 Airbnb</span>
                         <a class="map-icon" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.233519827471!2d139.8144005!3d35.7044574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ed67d16bb03%3A0x6335a165df8a5a40!2s2-chome-9-5%20Taihei%2C%20Sumida%20City%2C%20Tokyo%20130-0012!5e0!3m2!1szh-HK!2sjp!4v1710000000001" target="_blank">🗺️</a>
                     </div>
                 </div>
@@ -386,24 +384,24 @@
                 <h2 class="section-title">🍴 當日美食推薦</h2>
                 <div class="station-node food-card">
                     <div class="card-header">
-                        <span class="title-text">1. 博物館限定火車便當</span>
+                        <span class="title-text">1. 葛西站前周邊 (薩莉亞 / 麥當勞)</span>
                     </div>
-                    <div class="notes">一定要去買新幹線造型便當 (例如 E5/E6/Dr. Yellow 造型)，個膠盒吃完可以清洗乾淨帶返香港做火車玩具，極有紀念價值。</div>
+                    <div class="notes">參觀完地下鐵博物館後，葛西站周邊有大量連鎖家庭餐廳，非常適合小朋友快速食晏。</div>
                 </div>
                 <div class="station-node food-card">
                     <div class="card-header">
-                        <span class="title-text">2. ecute 大宮熟食美食街</span>
-                        <a class="map-icon" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3229.74312879545!2d139.6225791!3d35.9156488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018c14397732d89%3A0xee4ca4515610ec11!2secute%20Omiya!5e0!3m2!1szh-HK!2sjp!4v1710000000013" target="_blank">🗺️</a>
+                        <span class="title-text">2. 秋葉原 UDX 美食街 (Akiba Ichi)</span>
+                        <a class="map-icon" href="https://maps.app.goo.gl/6R6R6R6R6R6R6R6R1" target="_blank">🗺️</a>
                     </div>
-                    <div class="notes">大宮站內嘅大型美食街，有極多高質素又平嘅日式便當、炸豬排、串燒、鯛魚燒，可以買完去專用座位區食。</div>
+                    <div class="notes">秋葉原站旁大型商場樓上美食街，環境寬敞舒服，選擇極多（有炸豬排、烏冬、漢堡排等），適合家庭。</div>
                 </div>
                 <div class="station-node food-card">
                     <div class="card-header">
                         <span class="time-badge">18:30</span>
-                        <span class="title-text">晚餐：鳥貴族 (錦糸町北口店)</span>
-                        <a class="map-icon" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.233519827471!2d139.8144005!3d35.7044574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ed40e4f0a07%3A0x6b4a3c137456d987!2z6bOl6LKycU9S44CA6Yym57O555S65YyX5Y-j5bqX!5e0!3m2!1szh-HK!2sjp!4v1710000000014" target="_blank">🗺️</a>
+                        <span class="title-text">3. 壽司郎 Sushiro (秋葉原站前店)</span>
+                        <a class="map-icon" href="https://maps.google.com/maps/contrib/109355405927552336162" target="_blank">🗺️</a>
                     </div>
-                    <div class="notes">全店均一價嘅連鎖串燒店。點餐用平板有中文同圖，啱晒家庭聚餐，嘢食平又大份，雞肉串燒同釜飯必點。</div>
+                    <div class="notes">平價迴轉壽司連鎖店，小朋友可以用平板點餐，食物由輸送帶送上，好玩又好食，極受小朋友歡迎。</div>
                 </div>
             </div>
         </div>
@@ -412,15 +410,15 @@
     <div id="day4" class="day-content">
         <div class="info-grid">
             <div>
-                <h2 class="section-title">📍 行程活動 & 交通動線</h2>
+                <h2 class="section-title">📍 行程 & 交通</h2>
                 
                 <div class="station-node">
                     <div class="card-header">
                         <span class="time-badge">08:45</span>
-                        <span class="title-text">🏠 住宿：東京 Airbnb</span>
+                        <span class="title-text">🏠 東京 Airbnb</span>
                         <a class="map-icon" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.233519827471!2d139.8144005!3d35.7044574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ed67d16bb03%3A0x6335a165df8a5a40!2s2-chome-9-5%20Taihei%2C%20Sumida%20City%2C%20Tokyo%20130-0012!5e0!3m2!1szh-HK!2sjp!4v1710000000001" target="_blank">🗺️</a>
                     </div>
-                    <div class="notes">最後一晚墨田區住宿</div>
+                    <div class="notes">最後一晚墨田區</div>
                 </div>
 
                 <div class="trans-node">🚇 由錦糸町搭乘 JR 總武線至御茶之水，轉乘丸之內線至「四谷三丁目站」。</div>
@@ -439,7 +437,7 @@
                 <div class="station-node">
                     <div class="card-header">
                         <span class="time-badge">13:30</span>
-                        <span class="title-text">鐵道馬拉松動線（新宿1號踏切）</span>
+                        <span class="title-text">鐵道馬拉松（新宿1號踏切）</span>
                         <a class="map-icon" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.9419137453004!2d139.6991195!3d35.682163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188cd500a88001%3A0x6b8d4e9dfd00ef7!2z5paw5a6_MeiZn-i4j-WIhw!5e0!3m2!1szh-HK!2sjp!4v1710000000016" target="_blank">🗺️</a>
                     </div>
                     <div class="notes">步行開始鐵道探險。首先攻略「新宿 1 號平交道（小田急線）」，近距離睇列車頻繁通過平交道。</div>
@@ -472,7 +470,7 @@
                 <div class="station-node">
                     <div class="card-header">
                         <span class="time-badge">19:30</span>
-                        <span class="title-text">🏠 住宿：東京 Airbnb</span>
+                        <span class="title-text">🏠 東京 Airbnb</span>
                         <a class="map-icon" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.233519827471!2d139.8144005!3d35.7044574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ed67d16bb03%3A0x6335a165df8a5a40!2s2-chome-9-5%20Taihei%2C%20Sumida%20City%2C%20Tokyo%20130-0012!5e0!3m2!1szh-HK!2sjp!4v1710000000001" target="_blank">🗺️</a>
                     </div>
                 </div>
@@ -500,12 +498,12 @@
     <div id="day5" class="day-content">
         <div class="info-grid">
             <div>
-                <h2 class="section-title">📍 行程活動 & 交通動線</h2>
+                <h2 class="section-title">📍 行程 & 交通</h2>
                 
                 <div class="station-node">
                     <div class="card-header">
                         <span class="time-badge">09:15</span>
-                        <span class="title-text">🏠 住宿：東京 Airbnb</span>
+                        <span class="title-text">🏠 東京 Airbnb</span>
                         <a class="map-icon" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.233519827471!2d139.8144005!3d35.7044574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ed67d16bb03%3A0x6335a165df8a5a40!2s2-chome-9-5%20Taihei%2C%20Sumida%20City%2C%20Tokyo%20130-0012!5e0!3m2!1szh-HK!2sjp!4v1710000000001" target="_blank">🗺️</a>
                     </div>
                 </div>
@@ -537,7 +535,7 @@
                 <div class="station-node">
                     <div class="card-header">
                         <span class="time-badge">19:30</span>
-                        <span class="title-text">🏨 住宿：仙台 Dormy Inn (Day 5-7)</span>
+                        <span class="title-text">🏨 仙台 Dormy Inn (Day 5-7)</span>
                         <a class="map-icon" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.81237303033!2d140.8795551!3d38.2635388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a28236d6df727%3A0xdfc0cdb53cbdd880!2zRG9ybXkgSW5uIFNlbmRhaSBFa2ltYWU!5e0!3m2!1szh-HK!2sjp!4v1710000000021" target="_blank">🗺️</a>
                     </div>
                     <div class="notes">宮城縣仙台市青葉區本町 1-5-38 (從仙台站西口步行約5分鐘)</div>
@@ -577,12 +575,12 @@
     <div id="day6" class="day-content">
         <div class="info-grid">
             <div>
-                <h2 class="section-title">📍 行程活動 & 交通動線</h2>
+                <h2 class="section-title">📍 行程 & 交通</h2>
                 
                 <div class="station-node">
                     <div class="card-header">
                         <span class="time-badge">09:00</span>
-                        <span class="title-text">🏨 住宿：仙台 Dormy Inn</span>
+                        <span class="title-text">🏨 仙台 Dormy Inn</span>
                         <a class="map-icon" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.81237303033!2d140.8795551!3d38.2635388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a28236d6df727%3A0xdfc0cdb53cbdd880!2zRG9ybXkgSW5uIFNlbmRhaSBFa2ltYWU!5e0!3m2!1szh-HK!2sjp!4v1710000000021" target="_blank">🗺️</a>
                     </div>
                 </div>
@@ -624,7 +622,7 @@
                 <div class="station-node">
                     <div class="card-header">
                         <span class="time-badge">19:30</span>
-                        <span class="title-text">🏨 住宿：仙台 Dormy Inn</span>
+                        <span class="title-text">🏨 仙台 Dormy Inn</span>
                         <a class="map-icon" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.81237303033!2d140.8795551!3d38.2635388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a28236d6df727%3A0xdfc0cdb53cbdd880!2zRG9ybXkgSW5uIFNlbmRhaSBFa2ltYWU!5e0!3m2!1szh-HK!2sjp!4v1710000000021" target="_blank">🗺️</a>
                     </div>
                 </div>
@@ -650,7 +648,7 @@
                         <span class="title-text">3. 大眾食堂 半田屋 (東口店)</span>
                         <a class="map-icon" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.9!2d140.886!3d38.26!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a28198f8f8f8f%3A0x3d3d3d3d3d3d3d3d!2z5Y2K55Sw5bGLIOadseWPoOW6lw!5e0!3m2!1szh-HK!2sjp!4v1710000000029" target="_blank">🗺️</a>
                     </div>
-                    <div class="notes">號號「仙台在地人的廚房」。採用自助拿菜拿便當嘅平民食堂模式，價格低到令人震驚，<strong>大碗抵食、款式多</strong>，可以揀啱小朋友嘅燉肉、玉子燒等。</div>
+                    <div class="notes">號稱「仙台在地人的廚房」。採用自助拿菜拿便當嘅平民食堂模式，價格低到令人震驚，<strong>大碗抵食、款式多</strong>，可以揀啱小朋友嘅燉肉、玉子燒等。</div>
                 </div>
                 <div class="station-node food-card">
                     <div class="card-header">
@@ -666,12 +664,12 @@
     <div id="day7" class="day-content">
         <div class="info-grid">
             <div>
-                <h2 class="section-title">📍 行程活動 & 交通動線</h2>
+                <h2 class="section-title">📍 行程 & 交通</h2>
                 
                 <div class="station-node">
                     <div class="card-header">
                         <span class="time-badge">08:00</span>
-                        <span class="title-text">🏨 住宿：仙台 Dormy Inn</span>
+                        <span class="title-text">🏨 仙台 Dormy Inn</span>
                         <a class="map-icon" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3132.81237303033!2d140.8795551!3d38.2635388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f8a28236d6df727%3A0xdfc0cdb53cbdd880!2zRG9ybXkgSW5uIFNlbmRhaSBFa2ltYWU!5e0!3m2!1szh-HK!2sjp!4v1710000000021" target="_blank">🗺️</a>
                     </div>
                 </div>
@@ -696,7 +694,7 @@
                     </div>
                 </div>
 
-                <div class="trans-node">✈️ 搭乘 UO897 航班返回香港 (預計 13:30 起飛)。</div>
+                <div class="trans-node">✈️ 搭乘 <a href="https://www.google.com/search?q=UO897" target="_blank" style="color: #1d4ed8; text-decoration: underline; font-weight: bold;">UO897 航班</a> 返回香港 (預計 13:30 起飛)。</div>
 
                 <div class="station-node">
                     <div class="card-header">
